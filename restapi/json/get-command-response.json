@@ -1,0 +1,14 @@
+{
+  "device": "Random-Integer-Generator01",
+  "origin": 1611433185870402383,
+  "readings": [
+    {
+      "origin": 1611433185870361173,
+      "device": "Random-Integer-Generator01",
+      "name": "RandomValue_Int8",
+      "value": "-112",
+      "valueType": "Int8"
+    }
+  ],
+  "EncodedEvent": null
+}

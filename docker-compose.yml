@@ -1,0 +1,29 @@
+version: "3.0"
+
+services:
+  edgex-restapp:
+    image: mmomper/edgex-restapp
+    container_name: edgex-app-service-rest
+    hostname: edgex-app-service-rest
+    ports:
+      - 8080:8080
+      - 8443:8443
+    networks:
+      - edgex-network
+    volumes:
+      - persist:/persist
+    environment:
+      ADMIN_USERNAME: admin
+      ADMIN_PASSWORD: "strongpassword"
+      CLIENT_COREDATA_HOST: edgex-core-data
+      CLIENT_COREMETADATA_HOST: edgex-core-metadata
+      CLIENT_CORECOMMAND_HOST: edgex-core-command
+    # command: /edgex-restapp --scheme http
+
+networks:
+  edgex-network:
+    external:
+      name: edgex-network
+
+volumes:
+  persist:

@@ -1,0 +1,996 @@
+swagger: "2.0"
+info:
+  description: This is an RESTful application service for the EdgeX Foundry IoT-Gateway
+  title: iot-gateway
+  version: 0.0.2
+host: "0.0.0.0:8080" # TODO set port
+basePath: /api
+schemes:
+  - http
+  - https
+securityDefinitions:
+  basicAuth:
+    type: basic
+security:
+  - basicAuth: []
+  - {}
+paths:
+  /v1/admin/policies:
+    get:
+      summary: Find all policies
+      produces:
+        - application/json
+      parameters:
+        - $ref: "#/parameters/Limit"
+        - $ref: "#/parameters/Offset"
+      responses:
+        "200":
+          description: Ok
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Policy"
+        "401":
+          $ref: "#/responses/Unauthorized"
+        "403":
+          $ref: "#/responses/Forbidden"
+        "500":
+          $ref: "#/responses/InternalError"
+    post:
+      summary: Add a new policy
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - $ref: "#/parameters/PolicyBody"
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: "#/definitions/Policy"
+        "401":
+          $ref: "#/responses/Unauthorized"
+        "403":
+          $ref: "#/responses/Forbidden"
+        "409":
+          $ref: "#/responses/Conflict"
+        "500":
+          $ref: "#/responses/InternalError"
+    delete:
+      summary: Deletes the policy
+      consumes:
+        - application/json
+      parameters:
+        - $ref: "#/parameters/PolicyBody"
+      responses:
+        "200":
+          $ref: "#/responses/Deleted"
+        "401":
+          $ref: "#/responses/Unauthorized"
+        "403":
+          $ref: "#/responses/Forbidden"
+        "404":
+          $ref: "#/responses/NotFound"
+        "500":
+          $ref: "#/responses/InternalError"
+  /v1/admin/roles:
+    get:
+      summary: Find all roles
+      produces:
+        - application/json
+      parameters:
+        - $ref: "#/parameters/Limit"
+        - $ref: "#/parameters/Offset"
+      responses:
+        "200":
+          description: Ok
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Role"
+        "401":
+          $ref: "#/responses/Unauthorized"
+        "403":
+          $ref: "#/responses/Forbidden"
+        "500":
+          $ref: "#/responses/InternalError"
+    post:
+      summary: Add a new role
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - $ref: "#/parameters/RoleBody"
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: "#/definitions/Role"
+        "401":
+          $ref: "#/responses/Unauthorized"
+        "403":
+          $ref: "#/responses/Forbidden"
+        "409":
+          $ref: "#/responses/Conflict"
+        "500":
+          $ref: "#/responses/InternalError"
+  /v1/admin/roles/{role}:
+    delete:
+      summary: Deletes the role
+      consumes:
+        - application/json
+      parameters:
+        - $ref: "#/parameters/RolePath"
+      responses:
+        "200":
+          $ref: "#/responses/Deleted"
+        "401":
+          $ref: "#/responses/Unauthorized"
+        "403":
+          $ref: "#/responses/Forbidden"
+        "404":
+          $ref: "#/responses/NotFound"
+        "409":
+          $ref: "#/responses/Conflict"
+        "500":
+          $ref: "#/responses/InternalError"
+  /v1/admin/roles/{role}/users:
+    get:
+      summary: Finds all Users associated with the role
+      produces:
+        - application/json
+      parameters:
+        - $ref: "#/parameters/Limit"
+        - $ref: "#/parameters/Offset"
+        - $ref: "#/parameters/RolePath"
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/User"
+        "401":
+          $ref: "#/responses/Unauthorized"
+        "403":
+          $ref: "#/responses/Forbidden"
+        "404":
+          $ref: "#/responses/NotFound"
+        "500":
+          $ref: "#/responses/InternalError"
+  /v1/admin/users:
+    get:
+      summary: Find all Users
+      produces:
+        - application/json
+      parameters:
+        - $ref: "#/parameters/Limit"
+        - $ref: "#/parameters/Offset"
+      responses:
+        "200":
+          description: Ok
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/User"
+        "401":
+          $ref: "#/responses/Unauthorized"
+        "403":
+          $ref: "#/responses/Forbidden"
+        "500":
+          $ref: "#/responses/InternalError"
+    post:
+      summary: Add a new user
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: User to create
+          required: true
+          schema:
+            $ref: "#/definitions/UserCreate"
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: "#/definitions/User"
+        "401":
+          $ref: "#/responses/Unauthorized"
+        "403":
+          $ref: "#/responses/Forbidden"
+        "409":
+          $ref: "#/responses/Conflict"
+        "500":
+          $ref: "#/responses/InternalError"
+  /v1/admin/users/{user}:
+    get:
+      summary: Find user by name
+      produces:
+        - application/json
+      parameters:
+        - $ref: "#/parameters/UserPath"
+      responses:
+        "200":
+          description: Successful
+          schema:
+            $ref: "#/definitions/User"
+        "401":
+          $ref: "#/responses/Unauthorized"
+        "403":
+          $ref: "#/responses/Forbidden"
+        "404":
+          $ref: "#/responses/NotFound"
+        "500":
+          $ref: "#/responses/InternalError"
+    patch:
+      summary: Updates the user
+      consumes:
+        - application/json
+      parameters:
+        - $ref: "#/parameters/UserPath"
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/UserUpdate"
+      responses:
+        "200":
+          $ref: "#/responses/Updated"
+        "400":
+          $ref: "#/responses/UpdateFailed"
+        "401":
+          $ref: "#/responses/Unauthorized"
+        "403":
+          $ref: "#/responses/Forbidden"
+        "404":
+          $ref: "#/responses/NotFound"
+        "500":
+          $ref: "#/responses/InternalError"
+    delete:
+      summary: Deletes the user
+      parameters:
+        - $ref: "#/parameters/UserPath"
+      responses:
+        "200":
+          $ref: "#/responses/Deleted"
+        "401":
+          $ref: "#/responses/Unauthorized"
+        "403":
+          $ref: "#/responses/Forbidden"
+        "404":
+          $ref: "#/responses/NotFound"
+        "500":
+          $ref: "#/responses/InternalError"
+  /v1/devices:
+    get:
+      summary: Find all devices
+      produces:
+        - application/json
+      parameters:
+        - $ref: "#/parameters/Limit"
+        - $ref: "#/parameters/Offset"
+      responses:
+        "200":
+          description: Ok
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Device"
+        "401":
+          $ref: "#/responses/Unauthorized"
+        "403":
+          $ref: "#/responses/Forbidden"
+        "500":
+          $ref: "#/responses/InternalError"
+  /v1/devices/{device}:
+    get:
+      summary: Find device by name
+      produces:
+        - application/json
+      parameters:
+        - $ref: "#/parameters/DevicePath"
+      responses:
+        "200":
+          description: Ok
+          schema:
+            $ref: "#/definitions/Device"
+        "401":
+          $ref: "#/responses/Unauthorized"
+        "403":
+          $ref: "#/responses/Forbidden"
+        "404":
+          $ref: "#/responses/NotFound"
+        "500":
+          $ref: "#/responses/InternalError"
+  /v1/devices/{device}/profile:
+    get:
+      summary: Get deviceprofile of device
+      produces:
+        - application/json
+      parameters:
+        - $ref: "#/parameters/DevicePath"
+      responses:
+        "200":
+          description: Ok
+          schema:
+            $ref: "#/definitions/DeviceProfile"
+        "401":
+          $ref: "#/responses/Unauthorized"
+        "403":
+          $ref: "#/responses/Forbidden"
+        "404":
+          $ref: "#/responses/NotFound"
+        "500":
+          $ref: "#/responses/InternalError"
+  /v1/devices/{device}/resources/{resource}:
+    get:
+      summary: Get the last resource reading from the device
+      produces:
+        - application/json
+      parameters:
+        - $ref: "#/parameters/DevicePath"
+        - $ref: "#/parameters/ResourcePath"
+      responses:
+        "200":
+          description: Ok
+          schema:
+            $ref: "#/definitions/Reading"
+        "401":
+          $ref: "#/responses/Unauthorized"
+        "403":
+          $ref: "#/responses/Forbidden"
+        "404":
+          $ref: "#/responses/NotFound"
+        "500":
+          $ref: "#/responses/InternalError"
+  /v1/devices/{device}/commands/{command}:
+    get:
+      summary: Issue the GET command referenced by the command name to the device/sensor.
+      produces:
+        - application/json
+      parameters:
+        - $ref: "#/parameters/DevicePath"
+        - $ref: "#/parameters/CommandPath"
+      responses:
+        "200":
+          description: Ok
+          schema:
+            $ref: "#/definitions/CommandResponse"
+        "401":
+          $ref: "#/responses/Unauthorized"
+        "403":
+          $ref: "#/responses/Forbidden"
+        "404":
+          $ref: "#/responses/NotFound"
+        "500":
+          $ref: "#/responses/InternalError"
+    put:
+      summary: Issue the PUT command referenced by the command name to the device/sensor.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - $ref: "#/parameters/DevicePath"
+        - $ref: "#/parameters/CommandPath"
+        - $ref: "#/parameters/CommandBody"
+      responses:
+        "200":
+          description: Ok
+          schema:
+            $ref: "#/definitions/CommandResponse"
+        "401":
+          $ref: "#/responses/Unauthorized"
+        "403":
+          $ref: "#/responses/Forbidden"
+        "404":
+          $ref: "#/responses/NotFound"
+        "500":
+          $ref: "#/responses/InternalError"
+  /v1/devices/{device}/valuedescriptors:
+    get:
+      summary: Get all valuedescriptors
+      produces:
+        - application/json
+      parameters:
+        - $ref: "#/parameters/DevicePath"
+      responses:
+        "200":
+          description: Ok
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/ValueDescriptor"
+        "401":
+          $ref: "#/responses/Unauthorized"
+        "403":
+          $ref: "#/responses/Forbidden"
+        "404":
+          $ref: "#/responses/NotFound"
+        "500":
+          $ref: "#/responses/InternalError"
+  /v1/ping:
+    get:
+      summary: Health check
+      produces:
+        - text/plain
+      description: Test service providing an indication that the service is available.
+      security: []
+      responses:
+        "200":
+          description: Return value of "pong"
+          schema:
+            type: string
+            example: pong
+        "503":
+          $ref: "#/responses/InternalError"
+
+definitions:
+  Device:
+    title: device
+    description: Device or sensor supplying data and taking actuation commands
+    type: object
+    properties:
+      name:
+        title: name
+        type: string
+        x-order: 0
+      labels:
+        title: labels
+        type: array
+        items:
+          title: labels
+          type: string
+        x-order: 1
+        x-omitempty: true
+      description:
+        title: description
+        type: string
+        x-order: 2
+      location:
+        title: location
+        type: string
+        x-order: 3
+      created:
+        title: created
+        type: integer
+        x-order: 4
+      modified:
+        title: modified
+        type: integer
+        x-order: 5
+      operatingState:
+        title: operatingState
+        type: string
+        x-order: 6
+      lastConnected:
+        title: lastConnected
+        type: integer
+        x-order: 7
+      lastReported:
+        title: lastReported
+        type: integer
+        x-order: 8
+      profile:
+        $ref: "#/definitions/DeviceProfile"
+        x-order: 9
+  DeviceProfile:
+    title: deviceprofile
+    description: >-
+      Template describing devices and sensors of the same nature in reporting
+      the same data and offering the same commands
+    type: object
+    properties:
+      labels:
+        title: labels
+        type: array
+        items:
+          title: labels
+          type: string
+        x-order: 0
+        x-omitempty: true
+      description:
+        title: description
+        type: string
+        x-order: 1
+      created:
+        title: created
+        type: integer
+        x-order: 2
+      modified:
+        title: modified
+        type: integer
+        x-order: 3
+      manufacturer:
+        title: manufacturer
+        type: string
+        x-order: 4
+      model:
+        title: model
+        type: string
+        x-order: 5
+      resources:
+        title: resources
+        type: array
+        items:
+          $ref: "#/definitions/Resource"
+        x-order: 6
+        x-omitempty: true
+      commands:
+        title: commands
+        type: array
+        items:
+          $ref: "#/definitions/Command"
+        x-order: 7
+        x-omitempty: true
+  Resource:
+    title: resource
+    description: Resource of a device/sensor
+    type: object
+    properties:
+      name:
+        title: name
+        type: string
+        x-order: 0
+      description:
+        title: description
+        type: string
+        x-order: 1
+      tag:
+        title: tag
+        type: string
+        x-order: 2
+      properties:
+        $ref: "#/definitions/ResourceProperties"
+        x-order: 3
+  ResourceProperties:
+    title: properties
+    type: object
+    properties:
+      value:
+        $ref: "#/definitions/ResourcePropertiesValue"
+        x-order: 0
+      unit:
+        $ref: "#/definitions/ResourcePropertiesUnit"
+        x-order: 1
+  ResourcePropertiesValue:
+    title: value
+    type: object
+    properties:
+      type:
+        title: type
+        type: string
+        x-order: 0
+      readWrite:
+        title: readWrite
+        type: string
+        x-order: 1
+      minimum:
+        title: minimum
+        type: string
+        x-order: 2
+      maximum:
+        title: maximum
+        type: string
+        x-order: 3
+      defaultValue:
+        title: defaultValue
+        type: string
+        x-order: 4
+      mask:
+        title: mask
+        type: integer
+        format: uint64
+        x-order: 5
+      shift:
+        title: shift
+        type: integer
+        format: uint64
+        x-order: 6
+      scale:
+        title: scale
+        type: integer
+        x-order: 7
+      offset:
+        title: offset
+        type: integer
+        x-order: 8
+      base:
+        title: base
+        type: integer
+        x-order: 9
+      assertion:
+        title: assertion
+        type: string
+        x-order: 10
+      floatEncoding:
+        title: floatEncoding
+        type: string
+        x-order: 11
+      mediatype:
+        title: mediatype
+        type: string
+        x-order: 12
+  ResourcePropertiesUnit:
+    title: unit
+    type: object
+    properties:
+      type:
+        title: type
+        type: string
+        x-order: 0
+      readWrite:
+        title: readWrite
+        type: string
+        x-order: 1
+      defaultValue:
+        title: defaultValue
+        type: string
+        x-order: 2
+  Command:
+    title: command
+    description: command of a device/sensor
+    type: object
+    properties:
+      name:
+        title: name
+        type: string
+        x-order: 0
+      get:
+        title: get
+        type: object
+        x-order: 1
+        properties:
+          responses:
+            title: responses
+            type: array
+            items:
+              $ref: "#/definitions/CommandGetResponse"
+            x-order: 0
+            x-omitempty: true
+      put:
+        title: put
+        description: availabill put command
+        type: object
+        x-order: 2
+        properties:
+          parameterNames:
+            title: parameterNames
+            type: array
+            items:
+              type: string
+            x-order: 0
+            x-omitempty: true
+          responses:
+            title: responses
+            type: array
+            items:
+              $ref: "#/definitions/CommandPutResponse"
+            x-order: 1
+            x-omitempty: true
+  CommandGetResponse:
+    title: commandgetresponse
+    type: object
+    properties:
+      code:
+        title: code
+        type: string
+        x-order: 0
+      description:
+        title: description
+        type: string
+        x-order: 1
+      expectedValues:
+        title: expectedValues
+        type: array
+        items:
+          type: string
+        x-order: 2
+        x-omitempty: true
+  CommandPutResponse:
+    title: commandputresponse
+    type: object
+    properties:
+      code:
+        title: code
+        type: string
+        x-order: 0
+      description:
+        title: description
+        type: string
+        x-order: 1
+  Reading:
+    title: reading
+    description: Core device/sensor reading
+    type: object
+    properties:
+      name:
+        title: name
+        type: string
+        x-order: 0
+      created:
+        title: created
+        type: integer
+        x-order: 1
+      modified:
+        title: modified
+        type: integer
+        x-order: 2
+      value:
+        title: value
+        type: string
+        x-order: 3
+      valueType:
+        title: valueType
+        type: string
+        x-order: 4
+      pushed:
+        title: pushed
+        type: integer
+        x-order: 5
+  User:
+    title: user
+    description: Describes a user of the gateway
+    type: object
+    properties:
+      name:
+        title: name
+        type: string
+        x-order: 0
+      role:
+        title: name
+        type: string
+        x-order: 1
+  UserCreate:
+    title: user
+    description: Payload to create a new user
+    type: object
+    required:
+      - name
+      - password
+      - role
+    properties:
+      name:
+        title: name
+        type: string
+      password:
+        title: password
+        type: string
+      role:
+        title: name
+        type: string
+  UserUpdate:
+    title: user
+    description: Payload to updates a user
+    type: object
+    properties:
+      password:
+        title: password
+        type: string
+        x-nullable: true
+      role:
+        title: name
+        type: string
+        x-nullable: true
+  ValueDescriptor:
+    description: Core and MetaData value descriptor that describes device/sensor data sent and received
+    title: valueDescriptor
+    type: object
+    properties:
+      name:
+        title: name
+        type: string
+        x-order: 0
+      labels:
+        title: labels
+        type: array
+        items:
+          title: labels
+          type: string
+        x-order: 1
+        x-omitempty: true
+      description:
+        title: description
+        type: string
+        x-order: 2
+      created:
+        title: created
+        type: integer
+        x-order: 3
+      modified:
+        title: modified
+        type: integer
+        x-order: 4
+      type:
+        title: type
+        type: string
+        x-order: 5
+      uomLabel:
+        title: uomLabel
+        description: Unit
+        type: string
+        x-order: 6
+      min:
+        title: min
+        type: string
+        x-order: 7
+      max:
+        title: max
+        type: string
+        x-order: 8
+      defaultValue:
+        title: defaultValue
+        type: string
+        x-order: 9
+      formatting:
+        title: formatting
+        type: string
+        x-order: 10
+  Policy:
+    title: policy
+    description: Policy for access control
+    type: object
+    required:
+      - role
+      - resource
+      - method
+    properties:
+      role:
+        title: role
+        description: Role associated with the policy
+        type: string
+        example: guest
+        x-order: 0
+      resource:
+        title: resource
+        description: Resource associated whith the policy
+        type: string
+        example: /v1/devices/pi-136/*
+        x-order: 1
+      method:
+        title: method
+        description: Method associated whith the policy
+        type: string
+        example: GET
+        x-order: 2
+  Role:
+    title: role
+    description: role of the Gateway
+    type: string
+  CommandResponse:
+    title: response
+    description: Response from the command. Unknown schema
+    type: object
+  CommandPayload:
+    title: commandPayload
+    type: object
+    description: key/value properties for the command
+    additionalProperties:
+      type: object
+
+parameters:
+  Limit:
+    name: limit
+    in: query
+    description: The numbers of items to return
+    required: false
+    type: integer
+    minimum: 1
+    maximum: 500
+    default: 50
+  Offset:
+    name: offset
+    in: query
+    description: The number of items to skip before starting to collect the result set
+    required: false
+    type: integer
+    minimum: 0
+    default: 0
+  DevicePath:
+    name: device
+    in: path
+    description: The name of the device
+    required: true
+    type: string
+  UserPath:
+    name: user
+    in: path
+    description: name of the user
+    required: true
+    type: string
+  PolicyBody:
+    in: body
+    name: body
+    description: Policy to process
+    required: true
+    schema:
+      $ref: "#/definitions/Policy"
+  RoleBody:
+    in: body
+    name: body
+    description: Policy to process
+    required: true
+    schema:
+      $ref: "#/definitions/Role"
+  CommandPath:
+    name: command
+    in: path
+    description: Name of the command
+    required: true
+    type: string
+  ResourcePath:
+    name: resource
+    in: path
+    description: Name of the resource
+    required: true
+    type: string
+  CommandBody:
+    name: body
+    in: body
+    description: properties for the command
+    required: false
+    schema:
+      $ref: "#/definitions/CommandPayload"
+  RolePath:
+    name: role
+    in: path
+    description: Name of the Role
+    required: true
+    type: string
+
+responses:
+  NotFound:
+    description: The specified resource was not found
+    schema:
+      title: message
+      type: string
+  Unauthorized:
+    description: Unauthorized
+    schema:
+      title: message
+      type: string
+  InternalError:
+    description: For unknown or unanticipated issues
+    schema:
+      title: message
+      type: string
+  CreationFailed:
+    description: Creation request is invalid
+    schema:
+      title: message
+      type: string
+  Deleted:
+    description: Deleted
+    schema:
+      title: message
+      type: string
+  Updated:
+    description: Updated
+    schema:
+      title: message
+      type: string
+  UpdateFailed:
+    description: Update request is invalid
+    schema:
+      title: message
+      type: string
+  Forbidden:
+    description: forbidden
+    schema:
+      title: message
+      type: string
+  Conflict:
+    description: conflict
+    schema:
+      title: message
+      type: string
+  BadRequest:
+    description: bad request
+    schema:
+      title: message
+      type: string

@@ -1,0 +1,824 @@
+[
+  {
+    "created": 1609840231338,
+    "modified": 1609840231338,
+    "origin": 1609840231335,
+    "description": "Example of Device Random",
+    "id": "92f87db1-44df-4634-8278-a0a595702152",
+    "name": "Random-Integer-Generator01",
+    "adminState": "UNLOCKED",
+    "operatingState": "ENABLED",
+    "protocols": {
+      "other": {
+        "Address": "simple01",
+        "Port": "300"
+      }
+    },
+    "labels": [
+      "device-random-example"
+    ],
+    "service": {
+      "created": 1609840231323,
+      "modified": 1609840231323,
+      "origin": 1609840231322,
+      "id": "9032dabd-e879-43f4-b13e-b2616123f48f",
+      "name": "device-random",
+      "operatingState": "ENABLED",
+      "addressable": {
+        "created": 1609840231322,
+        "modified": 1609840231322,
+        "origin": 1609840231321,
+        "id": "c922d6b2-d85a-4b40-9170-4079cf54f634",
+        "name": "device-random",
+        "protocol": "HTTP",
+        "method": "POST",
+        "address": "edgex-device-random",
+        "port": 49988,
+        "path": "/api/v1/callback",
+        "baseURL": "http://edgex-device-random:49988",
+        "url": "http://edgex-device-random:49988/api/v1/callback"
+      },
+      "adminState": "UNLOCKED"
+    },
+    "profile": {
+      "created": 1609840231330,
+      "modified": 1609840231330,
+      "description": "Example of Device-Random",
+      "id": "ddfc9fe7-c33e-46e7-8f97-3bdf98ce9400",
+      "name": "Random-Integer-Generator",
+      "manufacturer": "IOTech",
+      "model": "Device-Random-01",
+      "labels": [
+        "device-random-example"
+      ],
+      "deviceResources": [
+        {
+          "description": "Generate random int8 value",
+          "name": "RandomValue_Int8",
+          "properties": {
+            "value": {
+              "type": "Int8",
+              "readWrite": "R",
+              "minimum": "-128",
+              "maximum": "127",
+              "defaultValue": "0"
+            },
+            "units": {
+              "type": "String",
+              "readWrite": "R",
+              "defaultValue": "random int8 value"
+            }
+          }
+        },
+        {
+          "description": "Minimum of random int8 value",
+          "name": "Min_Int8",
+          "properties": {
+            "value": {
+              "type": "Int8",
+              "readWrite": "R",
+              "minimum": "-128",
+              "maximum": "127",
+              "defaultValue": "-128"
+            },
+            "units": {
+              "type": "String",
+              "readWrite": "R",
+              "defaultValue": "random int8 minimum value"
+            }
+          }
+        },
+        {
+          "description": "Maximum of random int8 value",
+          "name": "Max_Int8",
+          "properties": {
+            "value": {
+              "type": "Int8",
+              "readWrite": "R",
+              "minimum": "-128",
+              "maximum": "127",
+              "defaultValue": "127"
+            },
+            "units": {
+              "type": "String",
+              "readWrite": "R",
+              "defaultValue": "random int8 maximum value"
+            }
+          }
+        },
+        {
+          "description": "Generate random int16 value",
+          "name": "RandomValue_Int16",
+          "properties": {
+            "value": {
+              "type": "Int16",
+              "readWrite": "R",
+              "minimum": "-32768",
+              "maximum": "32767",
+              "defaultValue": "0"
+            },
+            "units": {
+              "type": "String",
+              "readWrite": "R",
+              "defaultValue": "random int16 value"
+            }
+          }
+        },
+        {
+          "description": "Minimum of random int16 value",
+          "name": "Min_Int16",
+          "properties": {
+            "value": {
+              "type": "Int16",
+              "readWrite": "R",
+              "minimum": "-32768",
+              "maximum": "32767",
+              "defaultValue": "-32768"
+            },
+            "units": {
+              "type": "String",
+              "readWrite": "R",
+              "defaultValue": "random int16 minimum value"
+            }
+          }
+        },
+        {
+          "description": "Maximum of random int16 value",
+          "name": "Max_Int16",
+          "properties": {
+            "value": {
+              "type": "Int16",
+              "readWrite": "R",
+              "minimum": "-32768",
+              "maximum": "32767",
+              "defaultValue": "32767"
+            },
+            "units": {
+              "type": "String",
+              "readWrite": "R",
+              "defaultValue": "random int16 maximum value"
+            }
+          }
+        },
+        {
+          "description": "Generate random int32 value",
+          "name": "RandomValue_Int32",
+          "properties": {
+            "value": {
+              "type": "Int32",
+              "readWrite": "R",
+              "minimum": "-2147483648",
+              "maximum": "2147483647",
+              "defaultValue": "0"
+            },
+            "units": {
+              "type": "String",
+              "readWrite": "R",
+              "defaultValue": "random int32 value"
+            }
+          }
+        },
+        {
+          "description": "Minimum of random int32 value",
+          "name": "Min_Int32",
+          "properties": {
+            "value": {
+              "type": "Int32",
+              "readWrite": "R",
+              "minimum": "-2147483648",
+              "maximum": "2147483647",
+              "defaultValue": "-2147483648"
+            },
+            "units": {
+              "type": "String",
+              "readWrite": "R",
+              "defaultValue": "random int32 minimum value"
+            }
+          }
+        },
+        {
+          "description": "Maximum of random int32 value",
+          "name": "Max_Int32",
+          "properties": {
+            "value": {
+              "type": "Int32",
+              "readWrite": "R",
+              "minimum": "-2147483648",
+              "maximum": "2147483647",
+              "defaultValue": "2147483647"
+            },
+            "units": {
+              "type": "String",
+              "readWrite": "R",
+              "defaultValue": "random int32 maximum value"
+            }
+          }
+        }
+      ],
+      "deviceCommands": [
+        {
+          "name": "GenerateRandomValue_Int8",
+          "get": [
+            {
+              "operation": "get",
+              "object": "RandomValue_Int8",
+              "deviceResource": "RandomValue_Int8"
+            }
+          ],
+          "set": [
+            {
+              "operation": "set",
+              "object": "Min_Int8",
+              "deviceResource": "Min_Int8",
+              "parameter": "-128"
+            },
+            {
+              "operation": "set",
+              "object": "Max_Int8",
+              "deviceResource": "Max_Int8",
+              "parameter": "127"
+            }
+          ]
+        },
+        {
+          "name": "GenerateRandomValue_Int16",
+          "get": [
+            {
+              "operation": "get",
+              "object": "RandomValue_Int16",
+              "deviceResource": "RandomValue_Int16"
+            }
+          ],
+          "set": [
+            {
+              "operation": "set",
+              "object": "Min_Int16",
+              "deviceResource": "Min_Int16",
+              "parameter": "-32768"
+            },
+            {
+              "operation": "set",
+              "object": "Max_Int16",
+              "deviceResource": "Max_Int16",
+              "parameter": "32767"
+            }
+          ]
+        },
+        {
+          "name": "GenerateRandomValue_Int32",
+          "get": [
+            {
+              "operation": "get",
+              "object": "RandomValue_Int32",
+              "deviceResource": "RandomValue_Int32"
+            }
+          ],
+          "set": [
+            {
+              "operation": "set",
+              "object": "Min_Int32",
+              "deviceResource": "Min_Int32",
+              "parameter": "-2147483648"
+            },
+            {
+              "operation": "set",
+              "object": "Max_Int32",
+              "deviceResource": "Max_Int32",
+              "parameter": "2147483647"
+            }
+          ]
+        }
+      ],
+      "coreCommands": [
+        {
+          "name": "GenerateRandomValue_Int8",
+          "get": {
+            "path": "/api/v1/device/{deviceId}/GenerateRandomValue_Int8",
+            "responses": [
+              {
+                "code": "200",
+                "expectedValues": [
+                  "RandomValue_Int8"
+                ]
+              },
+              {
+                "code": "503",
+                "description": "service unavailable"
+              }
+            ]
+          },
+          "put": {
+            "path": "/api/v1/device/{deviceId}/GenerateRandomValue_Int8",
+            "responses": [
+              {
+                "code": "200"
+              },
+              {
+                "code": "503",
+                "description": "service unavailable"
+              }
+            ],
+            "parameterNames": [
+              "Min_Int8",
+              "Max_Int8"
+            ]
+          }
+        },
+        {
+          "name": "GenerateRandomValue_Int16",
+          "get": {
+            "path": "/api/v1/device/{deviceId}/GenerateRandomValue_Int16",
+            "responses": [
+              {
+                "code": "200",
+                "expectedValues": [
+                  "RandomValue_Int16"
+                ]
+              },
+              {
+                "code": "503",
+                "description": "service unavailable"
+              }
+            ]
+          },
+          "put": {
+            "path": "/api/v1/device/{deviceId}/GenerateRandomValue_Int16",
+            "responses": [
+              {
+                "code": "200"
+              },
+              {
+                "code": "503",
+                "description": "service unavailable"
+              }
+            ],
+            "parameterNames": [
+              "Min_Int16",
+              "Max_Int16"
+            ]
+          }
+        },
+        {
+          "name": "GenerateRandomValue_Int32",
+          "get": {
+            "path": "/api/v1/device/{deviceId}/GenerateRandomValue_Int32",
+            "responses": [
+              {
+                "code": "200",
+                "expectedValues": [
+                  "RandomValue_Int32"
+                ]
+              },
+              {
+                "code": "503",
+                "description": "service unavailable"
+              }
+            ]
+          },
+          "put": {
+            "path": "/api/v1/device/{deviceId}/GenerateRandomValue_Int32",
+            "responses": [
+              {
+                "code": "200"
+              },
+              {
+                "code": "503",
+                "description": "service unavailable"
+              }
+            ],
+            "parameterNames": [
+              "Min_Int32",
+              "Max_Int32"
+            ]
+          }
+        }
+      ]
+    },
+    "autoEvents": [
+      {
+        "frequency": "20s",
+        "resource": "GenerateRandomValue_Int8"
+      },
+      {
+        "frequency": "20s",
+        "resource": "GenerateRandomValue_Int16"
+      },
+      {
+        "frequency": "20s",
+        "resource": "GenerateRandomValue_Int32"
+      }
+    ]
+  },
+  {
+    "created": 1610383295933,
+    "modified": 1610383295933,
+    "description": "human and dog counting camera #1",
+    "id": "9a3dd55a-ffc6-4749-a65c-222da1c84fec",
+    "name": "countcamera1",
+    "adminState": "UNLOCKED",
+    "operatingState": "ENABLED",
+    "protocols": {
+      "camera protocol": {
+        "camera address": "camera 1"
+      }
+    },
+    "labels": [
+      "camera",
+      "counter"
+    ],
+    "location": "",
+    "service": {
+      "created": 1610383267670,
+      "modified": 1610383267670,
+      "description": "Manage human and dog counting cameras",
+      "id": "ffe00f57-d810-4192-9cdd-507424f8cbb9",
+      "name": "camera control device service",
+      "operatingState": "ENABLED",
+      "labels": [
+        "camera",
+        "counter"
+      ],
+      "addressable": {
+        "created": 1610383120208,
+        "modified": 1610383120208,
+        "id": "10c86253-ebd4-4c01-9f63-bf3bad81f93b",
+        "name": "camera control",
+        "protocol": "HTTP",
+        "address": "localhost",
+        "port": 49977,
+        "path": "/api/v1/callback",
+        "publisher": "none",
+        "user": "none",
+        "password": "none",
+        "topic": "none",
+        "baseURL": "http://localhost:49977",
+        "url": "http://localhost:49977/api/v1/callback"
+      },
+      "adminState": "UNLOCKED"
+    },
+    "profile": {
+      "created": 1610383233402,
+      "modified": 1610383233402,
+      "description": "Human and canine camera monitor profile",
+      "id": "d2144ce8-a57c-4eb5-82b8-3688cee8cdbc",
+      "name": "camera monitor profile",
+      "manufacturer": "IOTech",
+      "model": "Cam12345",
+      "labels": [
+        "camera"
+      ],
+      "deviceResources": [
+        {
+          "description": "Number of people on camera",
+          "name": "HumanCount",
+          "properties": {
+            "value": {
+              "type": "Int16",
+              "readWrite": "R",
+              "minimum": "0",
+              "maximum": "1000",
+              "defaultValue": "0"
+            },
+            "units": {
+              "type": "String",
+              "readWrite": "R",
+              "defaultValue": "count"
+            }
+          }
+        },
+        {
+          "description": "Number of dogs on camera",
+          "name": "CanineCount",
+          "properties": {
+            "value": {
+              "type": "Int16",
+              "readWrite": "R",
+              "minimum": "0",
+              "maximum": "1000",
+              "defaultValue": "0"
+            },
+            "units": {
+              "type": "String",
+              "readWrite": "R",
+              "defaultValue": "dog count"
+            }
+          }
+        },
+        {
+          "description": "Get the scan depth",
+          "name": "ScanDepth",
+          "properties": {
+            "value": {
+              "type": "Int16",
+              "readWrite": "R",
+              "minimum": "0",
+              "maximum": "100",
+              "defaultValue": "0"
+            },
+            "units": {
+              "type": "String",
+              "readWrite": "R",
+              "defaultValue": "depth"
+            }
+          }
+        },
+        {
+          "description": "Get the snaphot duration",
+          "name": "SnapshotDuration",
+          "properties": {
+            "value": {
+              "type": "Int16",
+              "readWrite": "R",
+              "minimum": "0",
+              "maximum": "60",
+              "defaultValue": "0"
+            },
+            "units": {
+              "type": "String",
+              "readWrite": "R",
+              "defaultValue": "duration"
+            }
+          }
+        }
+      ],
+      "deviceCommands": [
+        {
+          "name": "People",
+          "get": [
+            {
+              "operation": "get",
+              "object": "HumanCount",
+              "deviceResource": "HumanCount"
+            }
+          ]
+        },
+        {
+          "name": "Dogs",
+          "get": [
+            {
+              "operation": "get",
+              "object": "CanineCount",
+              "deviceResource": "CanineCount"
+            }
+          ]
+        },
+        {
+          "name": "Depth",
+          "get": [
+            {
+              "operation": "get",
+              "object": "ScanDepth",
+              "deviceResource": "ScanDepth"
+            }
+          ],
+          "set": [
+            {
+              "operation": "set",
+              "object": "ScanDepth",
+              "deviceResource": "ScanDepth",
+              "parameter": "0"
+            }
+          ]
+        },
+        {
+          "name": "Duration",
+          "get": [
+            {
+              "operation": "get",
+              "object": "SnapshotDuration",
+              "deviceResource": "SnapshotDuration"
+            }
+          ],
+          "set": [
+            {
+              "operation": "set",
+              "object": "SnapshotDuration",
+              "deviceResource": "SnapshotDuration",
+              "parameter": "0"
+            }
+          ]
+        }
+      ],
+      "coreCommands": [
+        {
+          "name": "People",
+          "get": {
+            "path": "/api/v1/devices/{deviceId}/People",
+            "responses": [
+              {
+                "code": "200",
+                "description": "Number of people on camera",
+                "expectedValues": [
+                  "HumanCount"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "Dogs",
+          "get": {
+            "path": "/api/v1/devices/{deviceId}/Dogs",
+            "responses": [
+              {
+                "code": "200",
+                "description": "Number of dogs on camera",
+                "expectedValues": [
+                  "CanineCount"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "Depth",
+          "get": {
+            "path": "/api/v1/devices/{deviceId}/Depth",
+            "responses": [
+              {
+                "code": "200",
+                "description": "Get the scan depth",
+                "expectedValues": [
+                  "ScanDepth"
+                ]
+              }
+            ]
+          },
+          "put": {
+            "path": "/api/v1/devices/{deviceId}/Depth",
+            "responses": [
+              {
+                "code": "200",
+                "description": "Set the scan depth."
+              }
+            ],
+            "parameterNames": [
+              "ScanDepth"
+            ]
+          }
+        },
+        {
+          "name": "Duration",
+          "get": {
+            "path": "/api/v1/devices/{deviceId}/Duration",
+            "responses": [
+              {
+                "code": "200",
+                "description": "Get the snaphot duration",
+                "expectedValues": [
+                  "SnapshotDuration"
+                ]
+              }
+            ]
+          },
+          "put": {
+            "path": "/api/v1/devices/{deviceId}/Duration",
+            "responses": [
+              {
+                "code": "200",
+                "description": "Set the snapshot duration."
+              }
+            ],
+            "parameterNames": [
+              "SnapshotDuration"
+            ]
+          }
+        },
+        {
+          "name": "Counts",
+          "get": {
+            "path": "/api/v1/devices/{deviceId}/Counts",
+            "responses": [
+              {
+                "code": "200",
+                "description": "Get the people and dog counts",
+                "expectedValues": [
+                  "HumanCount",
+                  "CanineCount"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "created": 1607859807199,
+    "modified": 1607859807199,
+    "origin": 1607859807196,
+    "description": "RaspPi 136",
+    "id": "e30d7456-da2d-42bb-bdd1-ef20adaa2f20",
+    "name": "pi-136",
+    "adminState": "UNLOCKED",
+    "operatingState": "ENABLED",
+    "protocols": {
+      "mqtt": {}
+    },
+    "labels": [
+      "MQTT",
+      "RaspPi"
+    ],
+    "service": {
+      "created": 1607859807169,
+      "modified": 1607859807169,
+      "origin": 1607859807168,
+      "id": "282ec2ac-0dca-4a93-b2ba-483a01cc50cf",
+      "name": "edgex-device-mqtt",
+      "operatingState": "ENABLED",
+      "addressable": {
+        "created": 1607859807168,
+        "modified": 1607859807168,
+        "origin": 1607859807168,
+        "id": "a87d19da-665f-4044-a3e8-151090b8ed41",
+        "name": "edgex-device-mqtt",
+        "protocol": "HTTP",
+        "method": "POST",
+        "address": "edgex-device-mqtt",
+        "port": 49982,
+        "path": "/api/v1/callback",
+        "baseURL": "http://edgex-device-mqtt:49982",
+        "url": "http://edgex-device-mqtt:49982/api/v1/callback"
+      },
+      "adminState": "UNLOCKED"
+    },
+    "profile": {
+      "created": 1607859807186,
+      "modified": 1607859807186,
+      "description": "Profile for Raspberry Pi 136",
+      "id": "38546447-8fd4-41f2-a90e-6e92bffc994c",
+      "name": "Test.Device.MQTT.Pi136.Profile",
+      "manufacturer": "Raspberry",
+      "model": "Raspberry Pi ?",
+      "labels": [
+        "mqtt",
+        "raspPi"
+      ],
+      "deviceResources": [
+        {
+          "description": "bme680 Temperatur",
+          "name": "bme680_temperature",
+          "properties": {
+            "value": {
+              "type": "Float64",
+              "readWrite": "R",
+              "floatEncoding": "eNotation"
+            },
+            "units": {
+              "type": "String",
+              "readWrite": "R",
+              "defaultValue": "C"
+            }
+          }
+        },
+        {
+          "description": "bme680 Gas",
+          "name": "bme680_gas",
+          "properties": {
+            "value": {
+              "type": "Int64",
+              "readWrite": "R"
+            },
+            "units": {
+              "type": "String",
+              "readWrite": "R",
+              "defaultValue": "Ohm"
+            }
+          }
+        },
+        {
+          "description": "bme680 Luftfeuchtigkeit",
+          "name": "bme680_humidity",
+          "properties": {
+            "value": {
+              "type": "Float64",
+              "readWrite": "R",
+              "floatEncoding": "eNotation"
+            },
+            "units": {
+              "type": "String",
+              "readWrite": "R",
+              "defaultValue": "%"
+            }
+          }
+        },
+        {
+          "description": "bme680 Luftdruck",
+          "name": "bme680_pressure",
+          "properties": {
+            "value": {
+              "type": "Float64",
+              "readWrite": "R",
+              "floatEncoding": "eNotation"
+            },
+            "units": {
+              "type": "String",
+              "readWrite": "R",
+              "defaultValue": "m"
+            }
+          }
+        }
+      ]
+    }
+  }
+]

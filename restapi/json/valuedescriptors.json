@@ -1,0 +1,110 @@
+[
+    {
+        "id": "218a5eb1-390e-4b27-a41e-c351194720b1",
+        "created": 1609840231332,
+        "description": "Maximum of random int8 value",
+        "name": "Max_Int8",
+        "min": "-128",
+        "max": "127",
+        "defaultValue": "127",
+        "type": "Int8",
+        "uomLabel": "random int8 maximum value",
+        "formatting": "%s"
+    },
+    {
+        "id": "91ac0582-13e2-4a8a-bb83-8174213b6a5c",
+        "created": 1609840231333,
+        "description": "Generate random int16 value",
+        "name": "RandomValue_Int16",
+        "min": "-32768",
+        "max": "32767",
+        "defaultValue": "0",
+        "type": "Int16",
+        "uomLabel": "random int16 value",
+        "formatting": "%s"
+    },
+    {
+        "id": "cd359fed-13f5-44a1-be58-631f7c0c4764",
+        "created": 1609840231333,
+        "description": "Minimum of random int16 value",
+        "name": "Min_Int16",
+        "min": "-32768",
+        "max": "32767",
+        "defaultValue": "-32768",
+        "type": "Int16",
+        "uomLabel": "random int16 minimum value",
+        "formatting": "%s"
+    },
+    {
+        "id": "d4419fef-a54a-4a34-8663-0a25c09228fa",
+        "created": 1609840231334,
+        "description": "Maximum of random int16 value",
+        "name": "Max_Int16",
+        "min": "-32768",
+        "max": "32767",
+        "defaultValue": "32767",
+        "type": "Int16",
+        "uomLabel": "random int16 maximum value",
+        "formatting": "%s"
+    },
+    {
+        "id": "6012cded-c2cb-433b-9ed4-08217cd3930f",
+        "created": 1609840231334,
+        "description": "Generate random int32 value",
+        "name": "RandomValue_Int32",
+        "min": "-2147483648",
+        "max": "2147483647",
+        "defaultValue": "0",
+        "type": "Int32",
+        "uomLabel": "random int32 value",
+        "formatting": "%s"
+    },
+    {
+        "id": "f50d667a-6529-4ec4-a796-d5a1074851ce",
+        "created": 1609840231335,
+        "description": "Minimum of random int32 value",
+        "name": "Min_Int32",
+        "min": "-2147483648",
+        "max": "2147483647",
+        "defaultValue": "-2147483648",
+        "type": "Int32",
+        "uomLabel": "random int32 minimum value",
+        "formatting": "%s"
+    },
+    {
+        "id": "811ee691-fff8-495d-a02a-b1d27762ea04",
+        "created": 1609840231335,
+        "description": "Maximum of random int32 value",
+        "name": "Max_Int32",
+        "min": "-2147483648",
+        "max": "2147483647",
+        "defaultValue": "2147483647",
+        "type": "Int32",
+        "uomLabel": "random int32 maximum value",
+        "formatting": "%s"
+    },
+    {
+        "id": "d3b782c9-3af7-4e21-8b67-c2c8c586cd99",
+        "created": 1609840231332,
+        "description": "Minimum of random int8 value",
+        "name": "Min_Int8",
+        "min": "-128",
+        "max": "127",
+        "defaultValue": "-128",
+        "type": "Int8",
+        "uomLabel": "random int8 minimum value",
+        "formatting": "%s"
+    },
+    {
+        "id": "98d5de5f-4aab-4d38-aefe-cd36c6d83720",
+        "created": 1609840231331,
+        "description": "Generate random int8 value",
+        "name": "RandomValue_Int8",
+        "min": "-128",
+        "max": "127",
+        "defaultValue": "0",
+        "type": "Int8",
+        "uomLabel": "random int8 value",
+        "formatting": "%s"
+    }
+]

@@ -1,0 +1,410 @@
+{
+  "created": 1609840231338,
+  "modified": 1609840231338,
+  "origin": 1609840231335,
+  "description": "Example of Device Random",
+  "id": "92f87db1-44df-4634-8278-a0a595702152",
+  "name": "Random-Integer-Generator01",
+  "adminState": "UNLOCKED",
+  "operatingState": "ENABLED",
+  "protocols": {
+    "other": {
+      "Address": "simple01",
+      "Port": "300"
+    }
+  },
+  "labels": [
+    "device-random-example"
+  ],
+  "service": {
+    "created": 1609840231323,
+    "modified": 1609840231323,
+    "origin": 1609840231322,
+    "id": "9032dabd-e879-43f4-b13e-b2616123f48f",
+    "name": "device-random",
+    "operatingState": "ENABLED",
+    "addressable": {
+      "created": 1609840231322,
+      "modified": 1609840231322,
+      "origin": 1609840231321,
+      "id": "c922d6b2-d85a-4b40-9170-4079cf54f634",
+      "name": "device-random",
+      "protocol": "HTTP",
+      "method": "POST",
+      "address": "edgex-device-random",
+      "port": 49988,
+      "path": "/api/v1/callback",
+      "baseURL": "http://edgex-device-random:49988",
+      "url": "http://edgex-device-random:49988/api/v1/callback"
+    },
+    "adminState": "UNLOCKED"
+  },
+  "profile": {
+    "created": 1609840231330,
+    "modified": 1609840231330,
+    "description": "Example of Device-Random",
+    "id": "ddfc9fe7-c33e-46e7-8f97-3bdf98ce9400",
+    "name": "Random-Integer-Generator",
+    "manufacturer": "IOTech",
+    "model": "Device-Random-01",
+    "labels": [
+      "device-random-example"
+    ],
+    "deviceResources": [
+      {
+        "description": "Generate random int8 value",
+        "name": "RandomValue_Int8",
+        "properties": {
+          "value": {
+            "type": "Int8",
+            "readWrite": "R",
+            "minimum": "-128",
+            "maximum": "127",
+            "defaultValue": "0"
+          },
+          "units": {
+            "type": "String",
+            "readWrite": "R",
+            "defaultValue": "random int8 value"
+          }
+        }
+      },
+      {
+        "description": "Minimum of random int8 value",
+        "name": "Min_Int8",
+        "properties": {
+          "value": {
+            "type": "Int8",
+            "readWrite": "R",
+            "minimum": "-128",
+            "maximum": "127",
+            "defaultValue": "-128"
+          },
+          "units": {
+            "type": "String",
+            "readWrite": "R",
+            "defaultValue": "random int8 minimum value"
+          }
+        }
+      },
+      {
+        "description": "Maximum of random int8 value",
+        "name": "Max_Int8",
+        "properties": {
+          "value": {
+            "type": "Int8",
+            "readWrite": "R",
+            "minimum": "-128",
+            "maximum": "127",
+            "defaultValue": "127"
+          },
+          "units": {
+            "type": "String",
+            "readWrite": "R",
+            "defaultValue": "random int8 maximum value"
+          }
+        }
+      },
+      {
+        "description": "Generate random int16 value",
+        "name": "RandomValue_Int16",
+        "properties": {
+          "value": {
+            "type": "Int16",
+            "readWrite": "R",
+            "minimum": "-32768",
+            "maximum": "32767",
+            "defaultValue": "0"
+          },
+          "units": {
+            "type": "String",
+            "readWrite": "R",
+            "defaultValue": "random int16 value"
+          }
+        }
+      },
+      {
+        "description": "Minimum of random int16 value",
+        "name": "Min_Int16",
+        "properties": {
+          "value": {
+            "type": "Int16",
+            "readWrite": "R",
+            "minimum": "-32768",
+            "maximum": "32767",
+            "defaultValue": "-32768"
+          },
+          "units": {
+            "type": "String",
+            "readWrite": "R",
+            "defaultValue": "random int16 minimum value"
+          }
+        }
+      },
+      {
+        "description": "Maximum of random int16 value",
+        "name": "Max_Int16",
+        "properties": {
+          "value": {
+            "type": "Int16",
+            "readWrite": "R",
+            "minimum": "-32768",
+            "maximum": "32767",
+            "defaultValue": "32767"
+          },
+          "units": {
+            "type": "String",
+            "readWrite": "R",
+            "defaultValue": "random int16 maximum value"
+          }
+        }
+      },
+      {
+        "description": "Generate random int32 value",
+        "name": "RandomValue_Int32",
+        "properties": {
+          "value": {
+            "type": "Int32",
+            "readWrite": "R",
+            "minimum": "-2147483648",
+            "maximum": "2147483647",
+            "defaultValue": "0"
+          },
+          "units": {
+            "type": "String",
+            "readWrite": "R",
+            "defaultValue": "random int32 value"
+          }
+        }
+      },
+      {
+        "description": "Minimum of random int32 value",
+        "name": "Min_Int32",
+        "properties": {
+          "value": {
+            "type": "Int32",
+            "readWrite": "R",
+            "minimum": "-2147483648",
+            "maximum": "2147483647",
+            "defaultValue": "-2147483648"
+          },
+          "units": {
+            "type": "String",
+            "readWrite": "R",
+            "defaultValue": "random int32 minimum value"
+          }
+        }
+      },
+      {
+        "description": "Maximum of random int32 value",
+        "name": "Max_Int32",
+        "properties": {
+          "value": {
+            "type": "Int32",
+            "readWrite": "R",
+            "minimum": "-2147483648",
+            "maximum": "2147483647",
+            "defaultValue": "2147483647"
+          },
+          "units": {
+            "type": "String",
+            "readWrite": "R",
+            "defaultValue": "random int32 maximum value"
+          }
+        }
+      }
+    ],
+    "deviceCommands": [
+      {
+        "name": "GenerateRandomValue_Int8",
+        "get": [
+          {
+            "operation": "get",
+            "object": "RandomValue_Int8",
+            "deviceResource": "RandomValue_Int8"
+          }
+        ],
+        "set": [
+          {
+            "operation": "set",
+            "object": "Min_Int8",
+            "deviceResource": "Min_Int8",
+            "parameter": "-128"
+          },
+          {
+            "operation": "set",
+            "object": "Max_Int8",
+            "deviceResource": "Max_Int8",
+            "parameter": "127"
+          }
+        ]
+      },
+      {
+        "name": "GenerateRandomValue_Int16",
+        "get": [
+          {
+            "operation": "get",
+            "object": "RandomValue_Int16",
+            "deviceResource": "RandomValue_Int16"
+          }
+        ],
+        "set": [
+          {
+            "operation": "set",
+            "object": "Min_Int16",
+            "deviceResource": "Min_Int16",
+            "parameter": "-32768"
+          },
+          {
+            "operation": "set",
+            "object": "Max_Int16",
+            "deviceResource": "Max_Int16",
+            "parameter": "32767"
+          }
+        ]
+      },
+      {
+        "name": "GenerateRandomValue_Int32",
+        "get": [
+          {
+            "operation": "get",
+            "object": "RandomValue_Int32",
+            "deviceResource": "RandomValue_Int32"
+          }
+        ],
+        "set": [
+          {
+            "operation": "set",
+            "object": "Min_Int32",
+            "deviceResource": "Min_Int32",
+            "parameter": "-2147483648"
+          },
+          {
+            "operation": "set",
+            "object": "Max_Int32",
+            "deviceResource": "Max_Int32",
+            "parameter": "2147483647"
+          }
+        ]
+      }
+    ],
+    "coreCommands": [
+      {
+        "name": "GenerateRandomValue_Int8",
+        "get": {
+          "path": "/api/v1/device/{deviceId}/GenerateRandomValue_Int8",
+          "responses": [
+            {
+              "code": "200",
+              "expectedValues": [
+                "RandomValue_Int8"
+              ]
+            },
+            {
+              "code": "503",
+              "description": "service unavailable"
+            }
+          ]
+        },
+        "put": {
+          "path": "/api/v1/device/{deviceId}/GenerateRandomValue_Int8",
+          "responses": [
+            {
+              "code": "200"
+            },
+            {
+              "code": "503",
+              "description": "service unavailable"
+            }
+          ],
+          "parameterNames": [
+            "Min_Int8",
+            "Max_Int8"
+          ]
+        }
+      },
+      {
+        "name": "GenerateRandomValue_Int16",
+        "get": {
+          "path": "/api/v1/device/{deviceId}/GenerateRandomValue_Int16",
+          "responses": [
+            {
+              "code": "200",
+              "expectedValues": [
+                "RandomValue_Int16"
+              ]
+            },
+            {
+              "code": "503",
+              "description": "service unavailable"
+            }
+          ]
+        },
+        "put": {
+          "path": "/api/v1/device/{deviceId}/GenerateRandomValue_Int16",
+          "responses": [
+            {
+              "code": "200"
+            },
+            {
+              "code": "503",
+              "description": "service unavailable"
+            }
+          ],
+          "parameterNames": [
+            "Min_Int16",
+            "Max_Int16"
+          ]
+        }
+      },
+      {
+        "name": "GenerateRandomValue_Int32",
+        "get": {
+          "path": "/api/v1/device/{deviceId}/GenerateRandomValue_Int32",
+          "responses": [
+            {
+              "code": "200",
+              "expectedValues": [
+                "RandomValue_Int32"
+              ]
+            },
+            {
+              "code": "503",
+              "description": "service unavailable"
+            }
+          ]
+        },
+        "put": {
+          "path": "/api/v1/device/{deviceId}/GenerateRandomValue_Int32",
+          "responses": [
+            {
+              "code": "200"
+            },
+            {
+              "code": "503",
+              "description": "service unavailable"
+            }
+          ],
+          "parameterNames": [
+            "Min_Int32",
+            "Max_Int32"
+          ]
+        }
+      }
+    ]
+  },
+  "autoEvents": [
+    {
+      "frequency": "20s",
+      "resource": "GenerateRandomValue_Int8"
+    },
+    {
+      "frequency": "20s",
+      "resource": "GenerateRandomValue_Int16"
+    },
+    {
+      "frequency": "20s",
+      "resource": "GenerateRandomValue_Int32"
+    }
+  ]
+}

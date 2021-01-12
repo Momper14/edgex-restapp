@@ -1,0 +1,11 @@
+[
+  {
+    "id": "c7f17c8b-8136-4690-87b2-5b54f5af953b",
+    "created": 1611431687332,
+    "origin": 1611431687330641446,
+    "device": "Random-Integer-Generator01",
+    "name": "RandomValue_Int8",
+    "value": "-113",
+    "valueType": "Int8"
+  }
+]
