@@ -89,12 +89,14 @@ func processPutRequestWithValidation(request *resty.Request, path string) ([]byt
 func GetLastReadingForDeviceAndResource(device, resource string) (*models.Reading, error) {
 	var (
 		readings []*models.Reading
-		path     = fmt.Sprintf("/api/v1/reading/name/%s/device/%s/1", resource, device)
+		path     = "/api/v1/reading/name/{resource}/device/{device}/1"
 	)
 
 	_, err := processGetRequestWithValidation(
 		ClientCoreData.
 			R().
+			SetPathParam("resource", resource).
+			SetPathParam("device", device).
 			SetHeader("Accept", "application/json").
 			SetResult(&readings),
 		path,
@@ -115,12 +117,13 @@ func GetLastReadingForDeviceAndResource(device, resource string) (*models.Readin
 func GetValueDescriptorsForDevice(device string) ([]*models.ValueDescriptor, error) {
 	var (
 		descriptors []*models.ValueDescriptor
-		path        = fmt.Sprintf("/api/v1/valuedescriptor/devicename/%s", device)
+		path        = "/api/v1/valuedescriptor/devicename/{device}"
 	)
 
 	_, err := processGetRequestWithValidation(
 		ClientCoreData.
 			R().
+			SetPathParam("device", device).
 			SetHeader("Accept", "application/json").
 			SetResult(&descriptors),
 		path,
@@ -193,14 +196,14 @@ func processCommandResponse(body []byte, err error) (interface{}, error) {
 
 // GetDeviceCommandForDeviceAndCommand executes a GET-command on the given device and returns the response.
 func GetDeviceCommandForDeviceAndCommand(device, command string) (models.CommandResponse, error) {
-	var (
-		path = fmt.Sprintf("/api/v1/device/name/%s/command/%s", device, command)
-	)
+	var path = "/api/v1/device/name/{device}/command/{command}"
 
 	return processCommandResponse(
 		processGetRequestWithValidation(
 			ClientCoreCommand.
 				R().
+				SetPathParam("device", device).
+				SetPathParam("command", command).
 				SetHeader("Accept", "application/json"),
 			path,
 		),
@@ -209,19 +212,16 @@ func GetDeviceCommandForDeviceAndCommand(device, command string) (models.Command
 
 // PutDeviceCommandForDeviceAndCommand executes a PUT-command on the given device and returns it response.
 func PutDeviceCommandForDeviceAndCommand(device, command string, payload models.CommandPayload) (models.CommandResponse, error) {
-	var (
-		path   = fmt.Sprintf("/api/v1/device/name/%s/command/%s", device, command)
-		header = map[string]string{
-			"Content-Type": "application/json",
-			"Accept":       "application/json",
-		}
-	)
+	var path = "/api/v1/device/name/{device}/command/{command}"
 
 	return processCommandResponse(
 		processPutRequestWithValidation(
 			ClientCoreCommand.
 				R().
-				SetHeaders(header).
+				SetPathParam("device", device).
+				SetPathParam("command", command).
+				SetHeader("Content-Type", "application/json").
+				SetHeader("Accept", "application/json").
 				SetBody(payload),
 			path,
 		),
