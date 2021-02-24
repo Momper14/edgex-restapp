@@ -4,9 +4,9 @@ import (
 	"net/http"
 
 	"github.com/go-openapi/errors"
-	"github.com/momper14/edgex-restapp/converter"
 	"github.com/momper14/edgex-restapp/db"
 	"github.com/momper14/edgex-restapp/models"
+	"github.com/momper14/edgex-restapp/restapi/converter"
 	"github.com/sirupsen/logrus"
 	"golang.org/x/crypto/bcrypt"
 )

@@ -10,8 +10,8 @@ import (
 	"github.com/jarcoal/httpmock"
 	"github.com/momper14/edgex-restapp/client"
 	clientmodels "github.com/momper14/edgex-restapp/client/models"
-	"github.com/momper14/edgex-restapp/converter"
 	"github.com/momper14/edgex-restapp/models"
+	"github.com/momper14/edgex-restapp/restapi/converter"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

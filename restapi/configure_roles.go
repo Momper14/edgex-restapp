@@ -4,9 +4,9 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime/middleware"
-	"github.com/momper14/edgex-restapp/converter"
 	"github.com/momper14/edgex-restapp/db"
 	"github.com/momper14/edgex-restapp/models"
+	"github.com/momper14/edgex-restapp/restapi/converter"
 	"github.com/momper14/edgex-restapp/restapi/operations"
 	"github.com/sirupsen/logrus"
 )

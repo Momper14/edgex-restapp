@@ -3,8 +3,8 @@ package restapi
 import (
 	"github.com/go-openapi/runtime/middleware"
 	"github.com/momper14/edgex-restapp/client"
-	"github.com/momper14/edgex-restapp/converter"
 	"github.com/momper14/edgex-restapp/models"
+	"github.com/momper14/edgex-restapp/restapi/converter"
 	"github.com/momper14/edgex-restapp/restapi/operations"
 	"github.com/sirupsen/logrus"
 )

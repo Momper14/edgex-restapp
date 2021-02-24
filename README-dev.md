@@ -59,7 +59,6 @@ This service is generated with the [go-swagger](https://github.com/go-swagger/go
 │   └── models                      models of the client
 ├── cmd                             executables
 │   └── edgex-restapp-server        server executable (generated)
-├── converter                       provides functions to convert between api models and client/db models.
 ├── db                              provides functions to communicate with the databases
 │   └── models                      database models
 ├── init                            init functions to initialize things like logger etc.
@@ -68,6 +67,7 @@ This service is generated with the [go-swagger](https://github.com/go-swagger/go
 ├── restapi                         package to configure the api server including authentication and authorization (partially generated)
 │   ├── json                        json files for tests
 │   ├── operations                  operations the api can do (generated)
+│   ├── converter                   provides functions to convert between api models and client/db models.
 └── util                            utilities like custom errors for the api server
 ```
 
