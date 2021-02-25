@@ -7,6 +7,7 @@ import (
 	"github.com/go-openapi/runtime/middleware"
 	"github.com/momper14/edgex-restapp/db"
 	"github.com/momper14/edgex-restapp/models"
+	"github.com/momper14/edgex-restapp/restapi/converter"
 	"github.com/momper14/edgex-restapp/restapi/operations"
 	"github.com/sirupsen/logrus"
 )
@@ -15,7 +16,7 @@ func configurePolicies(api *operations.EdgexRestappAPI) {
 
 	api.DeleteV1AdminPoliciesHandler = operations.DeleteV1AdminPoliciesHandlerFunc(
 		func(params operations.DeleteV1AdminPoliciesParams, principal *models.User) middleware.Responder {
-			err := db.DeletePolicy(params.Body)
+			err := db.DeletePolicy(converter.DbPolicyFrom(params.Body))
 			if err != nil {
 				if err == db.ErrNotFound {
 					encoded, _ := json.Marshal(params.Body)
@@ -49,13 +50,13 @@ func configurePolicies(api *operations.EdgexRestappAPI) {
 				policies = policies[offset:limit]
 			}
 
-			return operations.NewGetV1AdminPoliciesOK().WithPayload(policies)
+			return operations.NewGetV1AdminPoliciesOK().WithPayload(converter.PolicysFrom(policies))
 		},
 	)
 
 	api.PostV1AdminPoliciesHandler = operations.PostV1AdminPoliciesHandlerFunc(
 		func(params operations.PostV1AdminPoliciesParams, principal *models.User) middleware.Responder {
-			err := db.AddPolicy(params.Body)
+			err := db.AddPolicy(converter.DbPolicyFrom(params.Body))
 			if err != nil {
 				switch err {
 				case db.ErrRoleNotFound:

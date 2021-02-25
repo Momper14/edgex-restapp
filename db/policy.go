@@ -4,7 +4,7 @@ import (
 	"os"
 
 	"github.com/casbin/casbin/v2"
-	"github.com/momper14/edgex-restapp/models"
+	db "github.com/momper14/edgex-restapp/db/models"
 	"github.com/momper14/edgex-restapp/util"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
@@ -94,7 +94,7 @@ func init() {
 
 // AddPolicy adds the policy.
 // possible errors: ErrRoleNotFound, ErrAlreadyExists.
-func AddPolicy(p *models.Policy) (err error) {
+func AddPolicy(p *db.Policy) (err error) {
 	defer func() { recovery(&err) }()
 
 	roleExists, err := RoleExists(*p.Role)
@@ -120,7 +120,7 @@ func AddPolicy(p *models.Policy) (err error) {
 
 // DeletePolicy deletes the policy.
 // possible errors: ErrNotFound.
-func DeletePolicy(p *models.Policy) (err error) {
+func DeletePolicy(p *db.Policy) (err error) {
 	defer func() { recovery(&err) }()
 
 	deleted, err := Enforcer.RemovePolicy(*p.Role, *p.Resource, *p.Method)
@@ -137,15 +137,15 @@ func DeletePolicy(p *models.Policy) (err error) {
 }
 
 // GetPolicies returns all policies.
-func GetPolicies() (result []*models.Policy, err error) {
+func GetPolicies() (result []*db.Policy, err error) {
 	defer func() { recovery(&err) }()
 
 	policies := Enforcer.GetPolicy()
 
-	result = make([]*models.Policy, len(policies))
+	result = make([]*db.Policy, len(policies))
 
 	for i, p := range policies {
-		result[i] = &models.Policy{
+		result[i] = &db.Policy{
 			Role:     &p[0],
 			Resource: &p[1],
 			Method:   &p[2],

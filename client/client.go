@@ -154,12 +154,13 @@ func GetDevices() ([]*models.Device, error) {
 func GetDevice(device string) (*models.Device, error) {
 	var (
 		d    models.Device
-		path = fmt.Sprintf("/api/v1/device/name/%s", device)
+		path = "/api/v1/device/name/{device}"
 	)
 
 	_, err := processGetRequestWithValidation(
 		ClientCoreMetaData.
 			R().
+			SetPathParam("device", device).
 			SetHeader("Accept", "application/json").
 			SetResult(&d),
 		path,
