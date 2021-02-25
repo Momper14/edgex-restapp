@@ -2,7 +2,7 @@ version: "3.0"
 
 services:
   edgex-restapp:
-    image: mmomper/edgex-restapp:1.1
+    image: mmomper/edgex-restapp:latest
     container_name: edgex-app-service-rest
     hostname: edgex-app-service-rest
     ports:
