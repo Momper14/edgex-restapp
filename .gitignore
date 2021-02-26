@@ -26,5 +26,7 @@
 
 persist/
 config.yml
-edgex-restapp-*
+edgex-restapp-linux
+edgex-restapp-macos
+edgex-restapp-windows.exe
 tls/
